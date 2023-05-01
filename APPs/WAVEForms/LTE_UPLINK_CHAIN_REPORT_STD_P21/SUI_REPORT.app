@@ -172,7 +172,7 @@ object {
 	outputs {
 		name=output_0
 		remote_itf=input_0
-		remote_obj=GRAPH_MAPPING
+		remote_obj=IFFT
 	}
 	outputs {
 		name=output_1
@@ -188,11 +188,10 @@ object {
 ####################################################################MAPPINGIV
 
 
-####################################################################GRAPH_MAPPING
+########################################IFFT
 object {
-	obj_name=GRAPH_MAPPING
-	exe_name=GRAPH
-	force_pe=0
+	obj_name=IFFT
+	exe_name=FFT_IFFT
 	inputs {
 		name=input_0
 		remote_itf=output_0
@@ -201,43 +200,11 @@ object {
 	outputs {
 		name=output_0
 		remote_itf=input_0
-		remote_obj=IFFT
-	}
-}
-####################################################################DEC17_GRAPH_MAPPINGIV
-########################################IFFT
-object {
-	obj_name=IFFT
-	exe_name=FFT_IFFT
-	inputs {
-		name=input_0
-		remote_itf=output_0
-		remote_obj=GRAPH_MAPPING
-	}
-	outputs {
-		name=output_0
-		remote_itf=input_0
-		remote_obj=GRAPH_IFFT
-	}
-}
-########################################IFFT
-########################################GRAPH_IFFT
-object {
-	obj_name=GRAPH_IFFT
-	exe_name=GRAPH
-	force_pe=0
-	inputs {
-		name=input_0
-		remote_itf=output_0
-		remote_obj=IFFT
-	}
-	outputs {
-		name=output_0
-		remote_itf=input_0
 		remote_obj=DUC17
 	}
 }
-########################################GRAPH_IFFT
+########################################IFFT
+
 #####################################################DUC17
 object {
 	obj_name=DUC17
@@ -246,32 +213,16 @@ object {
 	inputs {
 		name=input_0
 		remote_itf=output_0
-		remote_obj=GRAPH_IFFT
+		remote_obj=IFFT
 	}
 	outputs {
 		name=output_0
 		remote_itf=input_0
-		remote_obj=GRAPH_DUC
+		remote_obj=CIRC_BUFFER_TX
 	}
 }
 ####################################################################DUC
-####################################################################GRAPH_DUC
-object {
-	obj_name=GRAPH_DUC			
-	exe_name=GRAPH
-	force_pe=0
-	inputs {
-		name=input_0
-		remote_itf=output_0
-		remote_obj=DUC17
-	}
-	outputs {
-		name=output_0
-		remote_itf=input_0
-		remote_obj=CIRC_BUFFER_TX	
-	}
-}
-####################################################################GRAPH_DUC
+
 ####################################################################CIR_BUFFER_TX
 object {
 	obj_name=CIRC_BUFFER_TX
@@ -280,7 +231,7 @@ object {
 	inputs {
 		name=input_0
 		remote_itf=output_0
-		remote_obj=GRAPH_DUC
+		remote_obj=DUC17
 	}
 	outputs {
 		name=output_0
@@ -335,7 +286,7 @@ object {
 	outputs {
 		name=output_0
 		remote_itf=input_0
-		remote_obj=GRAPH_CHANNEL
+		remote_obj=CIRC_BUFFER_RX
 	}
 	inputs {
 		name=input_1
@@ -350,24 +301,6 @@ object {
 
 }
 ####################################################################CHANNEL_NOISE
-
-####################################################################GRAPH_CHANNEL
-object {
-	obj_name=GRAPH_CHANNEL
-	exe_name=GRAPH
-	force_pe=0
-	inputs {
-		name=input_0
-		remote_itf=output_0
-		remote_obj=CHAN_NOISE
-	}
-	outputs {
-		name=output_0
-		remote_itf=input_0
-		remote_obj=CIRC_BUFFER_RX
-	}
-}
-####################################################################GRAPH_CHANNEL
 ####################################################################CIR_BUFFER_RX
 object {
 	obj_name=CIRC_BUFFER_RX				
@@ -376,7 +309,7 @@ object {
 	inputs {
 		name=input_0
 		remote_itf=output_0
-		remote_obj=GRAPH_CHANNEL
+		remote_obj=CHAN_NOISE
 	}
 	outputs {
 		name=output_0
@@ -398,27 +331,10 @@ object {
 	outputs {
 		name=output_0
 		remote_itf=input_0
-		remote_obj=GRAPH_DDC
+		remote_obj=UPLINK_SYNCHRO
 	}
 }
 ####################################################################DDC17
-####################################################################GRAPH_DDC
-object {
-	obj_name=GRAPH_DDC			
-	exe_name=GRAPH
-	force_pe=0
-	inputs {
-		name=input_0
-		remote_itf=output_0
-		remote_obj=DDC17
-	}
-	outputs {
-		name=output_0
-		remote_itf=input_0
-		remote_obj=UPLINK_SYNCHRO	
-	}
-}
-####################################################################GRAPH_DDC
 ######################################################################UPLINK_SYNCHRO
 object {
 	obj_name=UPLINK_SYNCHRO
@@ -426,7 +342,7 @@ object {
 	inputs {
 		name=input_0
 		remote_itf=output_0
-		remote_obj=GRAPH_DDC
+		remote_obj=DDC17
 	}
 	outputs {
 		name=output_0
@@ -507,27 +423,11 @@ object {
 	outputs {
 		name=output_0
 		remote_itf=input_0
-		remote_obj=GRAPH_DEMAPPING
+		remote_obj=DEMOD_16QAM
 	}
 }
 ########################################DFT
-####################################################################GRAPH_FFT
-object {
-	obj_name=GRAPH_DEMAPPING			
-	exe_name=GRAPH
-	force_pe=0
-	inputs {
-		name=input_0
-		remote_itf=output_0
-		remote_obj=IDFT
-	}
-	outputs {
-		name=output_0
-		remote_itf=input_0
-		remote_obj=DEMOD_16QAM	
-	}
-}
-####################################################################GRAPH_FFT
+
 ####################################################################DEMOD16QAM
 object {
 	obj_name=DEMOD_16QAM
@@ -536,7 +436,7 @@ object {
 	inputs {
 		name=input_0
 		remote_itf=output_0
-		remote_obj=GRAPH_DEMAPPING
+		remote_obj=IDFT
 	}
 	outputs {
 		name=output_0
