@@ -12,7 +12,7 @@ parameter {
 # The SNR real value is SRNreal=SNR-10dBs
 parameter {
 	name = SNR
-	value = 10.0
+	value = 8.0
 }
 parameter {
 	name = NoiseVariance
