@@ -53,7 +53,7 @@ parameter {
 # Higher number of errors as higher CodeRate value
 parameter {
 	name = CodeRate
-	value = 0.33
+	value = 0.39
 }
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # datatypeIN: CHAR or FLOAT
