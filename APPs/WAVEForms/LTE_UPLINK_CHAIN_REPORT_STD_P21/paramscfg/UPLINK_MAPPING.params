@@ -73,7 +73,7 @@ parameter {
 # NofDataSampl2ask: Define the number of bytes to ask for.
 parameter {
 	name = NofDataSampl2ask
-	value = 309
+	value = 365
 }
 ###################################################################
 #------------------------------------------------------------------
