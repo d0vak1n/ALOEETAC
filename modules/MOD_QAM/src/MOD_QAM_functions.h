@@ -30,6 +30,9 @@
 #define M_4QAM						1
 #define M_16QAM						2
 #define M_64QAM						3
+#define M_256QAM					4
+#define M_1024QAM					5
+
 
 #define NODEBUGG					0
 #define DEBUGG						1
@@ -50,6 +53,16 @@ int hard_demod_16QAM (char *bits, complex *symbols, int numsymb);
 int soft_demod_16QAM (_Complex float *symbols, int numinputsymb, float * softbits);
 int norm16QAM(_Complex float *inout, int length);
 
+int mod_64QAM (char *bits, int numbits, _Complex float *symbols);
+int hard_demod_64QAM (char *bits, complex *symbols, int numsymb);
+int soft_demod_64QAM (_Complex float *symbols, int numinputsymb, float * softbits);
+int norm64QAM(_Complex float *inout, int length);
 
+int mod_256QAM (char *bits, int numbits, _Complex float *symbols);
+int soft_demod_256QAM(_Complex float *symbols, int numinputsymb, float *softbits);
+int norm256QAM(_Complex float *inout, int length);
 
+int mod_1024QAM (char *bits, int numbits, _Complex float *symbols);
+int soft_demod_1024QAM(_Complex float *symbols, int numinputsymb, float *softbits);
+int norm1024QAM(_Complex float *inout, int length);
 #endif

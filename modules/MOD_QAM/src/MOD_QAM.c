@@ -100,49 +100,64 @@ int initialize() {
 
 int work(void *inp, void *out) {
 	static int Tslot=0;
-	int snd_samples=0, snd_samples1=0, rcv_samples=0;
+	int snd_samples=0, snd_samples1=0, rcv_samples=0,a=0;
 
 	_Complex float *input0CPLX;
 	char *input0CHAR;
 	float *output0FLOAT;
 	_Complex float *output0CPLX;
 	char *output0CHAR;
-	int i;
 
-	/* PUT HERE YOUR DSP TASKS ///////////////////////////////*/
+	
 	if(oParam.opMODE==MODULATE){
 		input0CHAR = in(inp,0);
 		rcv_samples = get_input_samples(0);
 		output0CPLX = out(out,0);
-		if(oParam.debugg)printf("MOD rcv_samples(BITS)=%d\n", rcv_samples);
+		if(oParam.debugg)printf("MOD rcv_samples(BITS)=%d, modulation=%d\n", rcv_samples, oParam.modulation);
+
+		if(oParam.modulation==M_4QAM)snd_samples = mod_4QAM(input0CHAR, rcv_samples, output0CPLX);
 		if(oParam.modulation==M_16QAM)snd_samples = mod_16QAM(input0CHAR, rcv_samples, output0CPLX);
+		if(oParam.modulation==M_64QAM)snd_samples = mod_64QAM(input0CHAR, rcv_samples, output0CPLX);
+		if(oParam.modulation==M_256QAM)snd_samples = mod_256QAM(input0CHAR, rcv_samples, output0CPLX);	
+		if(oParam.modulation==M_1024QAM)snd_samples = mod_1024QAM(input0CHAR, rcv_samples, output0CPLX);	
+		
+
 		if(oParam.debugg)printf("MOD snd_samples(CPLX FLOAT)=%d\n", snd_samples);
 		snd_samples=snd_samples*sizeof(_Complex float);								//Send as chars
 	}
 	if(oParam.opMODE==HARD_DEMODULATE){
-		printf("Not Ready Yet");
+		//printf("Not Ready Yet");
 	}
 	if(oParam.opMODE==SOFT_DEMODULATE){
 		input0CPLX = in(inp,0);
 		rcv_samples = get_input_samples(0)/sizeof(_Complex float);		//Received as chars
 		output0FLOAT = out(out,0);
 //		print_array("IN_DEMOD", IN_TYPE, input0CPLX, 16, 8);
-		if(oParam.debugg)printf("DEMOD rcv_samples(CPLX FLOAT)=%d\n", rcv_samples);
+		if(oParam.debugg)printf("DEMOD rcv_samples(CPLX FLOAT)=%d, modulation=%d\n", rcv_samples, oParam.modulation);
+
+		if(oParam.modulation==M_4QAM)snd_samples = soft_demod_4QAM(input0CPLX, rcv_samples, output0FLOAT);
 		if(oParam.modulation==M_16QAM)snd_samples = soft_demod_16QAM(input0CPLX, rcv_samples, output0FLOAT);
+		if(oParam.modulation==M_64QAM)snd_samples = soft_demod_64QAM(input0CPLX, rcv_samples, output0FLOAT);
+		if(oParam.modulation==M_256QAM)snd_samples = soft_demod_256QAM(input0CPLX, rcv_samples, output0FLOAT);
+		if(oParam.modulation==M_1024QAM)snd_samples = soft_demod_1024QAM(input0CPLX, rcv_samples, output0FLOAT);
+		
+		
+
 //		print_array("OUT_DEMOD", "FLOAT", output0FLOAT, 16, 8);
 
 		if(oParam.debugg)printf("DEMOD snd_samples(FLOATS)=%d\n", snd_samples);
 		snd_samples=snd_samples*sizeof(float);												//Send as chars
 	}
 
-	/* INDICATE THE NUMBER OF OUTPUT SAMPLES AT EACH OUTPUT */
-	set_output_samples(0, snd_samples);								//	set_output_samples(Output_number, number_of_samples);
+	set_output_samples(0, snd_samples);	
+							//	set_output_samples(Output_number, number_of_samples);
 	if(snd_samples > OUTPUT_MAX_SAMPLES){
 		printf(BOLD T_RED"MODULE %s: Tslot=%d. ERROR!!! snd_samples=%d exceeding output buffer size=%d"RESET"\n", 
 					GetObjectName(), Tslot, snd_samples, OUTPUT_MAX_SAMPLES);
 		return(-1);
 	}
-	// UPDATE TIME SLOT COUNTER
+
+
 	Tslot++;
 	return 1;														// Always return 1 when successful
 }

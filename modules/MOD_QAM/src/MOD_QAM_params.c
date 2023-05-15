@@ -81,7 +81,7 @@ void print_params(char *mnamel, MODparams_t oParaml){
 	printf(RESET BOLD T_LIGHTRED		"    INITIALIZED PARAMS FOR: %s  \n", mnamel);
 	printf(RESET BOLD T_GREEN			"      opMODE=%d (0: Modulate, 1: Hard Demodulate, 2: Soft Demodulate)\n", 
 																				oParaml.opMODE);
-	printf(RESET BOLD T_GREEN			"      modulation=%d, 0:BPSK, 1:4QAM, 2:16QAM, 3:64QAM\n", 
+	printf(RESET BOLD T_GREEN			"      modulation=%d, 0:BPSK, 1:4QAM, 2:16QAM, 3:64QAM, 4:256QAM, 5:1024QAM\n", 
 																				oParaml.modulation);
 
 	printf(RESET BOLD T_BLACK "==============================================================================================\n");
