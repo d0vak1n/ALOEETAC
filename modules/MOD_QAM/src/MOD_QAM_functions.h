@@ -48,6 +48,10 @@ static MODparams_t oParam={MODULATE, M_16QAM, NODEBUGG};		// Initialize module p
 
 /*************************************************************************************************/
 // Functions Predefinition
+int mod_4QAM(char *bits, int numbits, _Complex float *symbols);
+int soft_demod_4QAM(_Complex float *symbols, int numinputsymb, float *softbits);
+int norm4QAM(_Complex float *inout, int length);
+
 int mod_16QAM (char *bits, int numbits, _Complex float *symbols);
 int hard_demod_16QAM (char *bits, complex *symbols, int numsymb);
 int soft_demod_16QAM (_Complex float *symbols, int numinputsymb, float * softbits);

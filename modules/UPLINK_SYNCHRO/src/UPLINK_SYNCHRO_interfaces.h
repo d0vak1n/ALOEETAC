@@ -39,7 +39,7 @@ typedef _Complex float  input_t;			//_Complex float, float, int, char, char
 typedef _Complex float  output_t;			//_Complex float, float, int, char, char
 #define OUT_TYPE		COMPLEX		//COMPLEXFLOAT, FLOAT, INT, CHAR, BITS
 #define OUTPUT_MAX_DATA 	50*2048
-#define NOF_OUTPUT_ITF		3
+#define NOF_OUTPUT_ITF		4
 
 
 /********* do not need to modify beyond here */

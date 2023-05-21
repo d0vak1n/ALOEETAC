@@ -115,9 +115,10 @@ int work(input_t *inp, output_t *out) {
 	output_t *output0 = out(out,0);
 	output_t *output1 = out(out,1);
 	output_t *output2 = out(out,2);
+	output_t *output3 = out(out,3);
 
 	int rcv_samples = get_input_samples(0); /** number of samples at itf 0 buffer */
-	int snd_samples0=0, snd_samples1=0, snd_samples2=0;
+	int snd_samples0=0, snd_samples1=0, snd_samples2=0, snd_samples3=0;
 	int i,k;
 	int pMAX;
 	float Dphase=0.0;
@@ -127,15 +128,16 @@ int work(input_t *inp, output_t *out) {
 
 //	printf("%s IN Tslot=%d: rcv_samples=%d\n", mname, Tslot, rcv_samples);
 
-	/* do DSP stuff here */
+	/* do DSP stuff here *RCV_SAMPLES=ffT*7*/
 	stream_conv_CPLX(input0, rcv_samples, DMRS_RX_TIME, FFTsize, CorrResult);
 	pMAX=detect_DMRS_in_subframe(CorrResult, rcv_samples);
-	if(pMAX >= 0)printf("DMRS sequence found: pMAX=%d\n", pMAX);
+	if(pMAX >= 0) printf("DMRS sequence found: pMAX=%d\n", pMAX);
+	else return 0;
 	// DETECT CFO
-	Dphase=checkPhaseOffset(&CorrResult[0]+pMAX);
+	Dphase=checkPhaseOffset(&CorrResult[pMAX]);
 	printf("DetectedPhase=%f\n", Dphase);
 	// CORRECT CFO
-	rotateCvector(input0, input0, rcv_samples, -Dphase);
+	rotateCvector(input0,rcv_samples, -Dphase);
 	// WRITE INTO ALIGNED SUBFRAME BUFFER
 	if(pMAX>=0)write_subframe_buffer(input0, pMAX, rcv_samples, FFTsize);
 	// READ FROM ALIGNED SUBFRAME AND COPY TO OUTPUT
@@ -149,11 +151,17 @@ int work(input_t *inp, output_t *out) {
 	memcpy(output2, output0, sizeof(_Complex float)*rcv_samples);
 	snd_samples2=rcv_samples;
 
+	// OUTPUT 3
+	memcpy(output3, output0, sizeof(_Complex float)*rcv_samples);
+	snd_samples3=rcv_samples;
+	
+
 	// TIMESLOT COUNT
 	Tslot++;
 	// Indicate the number of samples at output number N
 	set_output_samples(1, snd_samples1);
 	set_output_samples(2, snd_samples2);
+	set_output_samples(3, snd_samples3);
 //	printf("%s OUT: snd_samples0=%d\n", mname, snd_samples0);
 	// Indicate the number of samples at output 0 with return value
 	return snd_samples0;

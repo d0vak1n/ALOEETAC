@@ -144,36 +144,36 @@ extern MODparams_t oParam;
 	//-----------> I
 	// 11  |  01
 	
-void mod_4QAM(char *bits, int numbits, _Complex float *symbols) {
-    int i, k, j = 0;
+int mod_4QAM(char *bits, int numbits, _Complex float *symbols) {
+	int i, k, j = 0;
 
-    if (numbits == 0)
-        return;
+	if (numbits==0) return 0;
 
-    for (i = 0; i < numbits; i += 2) {
-        k = ((bits[i] == '1') ? 1 : 0) << 1 | ((bits[i + 1] == '1') ? 1 : 0);
-        switch (k) {
-            case 0:
-                symbols[j] = QAM4_LEVEL + QAM4_LEVEL * I;
-                break;
-            case 1:
-                symbols[j] = QAM4_LEVEL - QAM4_LEVEL * I;
-                break;
-            case 2:
-                symbols[j] = -QAM4_LEVEL + QAM4_LEVEL * I;
-                break;
-            case 3:
-                symbols[j] = -QAM4_LEVEL - QAM4_LEVEL * I;
-                break;
-            default:
-                printf("ERROR: Símbolo desconocido para QAM4: %d\n", k);
-                return;
-        }
-        j++;
-    }
+	for (i=0;i<numbits;i+=2) {
+		k = ((bits[i] == 1) ? 1 : 0) << 1 | ((bits[i + 1] == 1) ? 1 : 0);
+		switch (k) {
+			case 0:
+				*(symbols+j)=QAM4_LEVEL+QAM4_LEVEL*I;
+				break;
+			case 1:
+				*(symbols+j)=QAM4_LEVEL-QAM4_LEVEL*I;
+				break;
+			case 2:
+				*(symbols+j)=-QAM4_LEVEL+QAM4_LEVEL*I;
+				break;
+			case 3:
+				*(symbols+j)=-QAM4_LEVEL-QAM4_LEVEL*I;
+				break;
+			default:
+				Log("ERROR: Unknown symbol for QAM4: %d\n",k);
+				return ;
+		}
+		j++;
+	}
+	return j;
 }
 
-int soft_demod_4QAM(_Complex float *symbols, int numinputsymb, float *softbits){
+int soft_demod_4QAM(_Complex float *symbols, int numinputsymb, float *softbits) {
 	int i, j=0;
 	float in_real, in_imag;
 
@@ -181,31 +181,32 @@ int soft_demod_4QAM(_Complex float *symbols, int numinputsymb, float *softbits){
 	norm4QAM(symbols, numinputsymb);
 
 
-	for (i=0;i<numinputsymb;i++){
-		softbits[j+0]=creal(*(symbols+i));
-		softbits[j+1]=cimag(*(symbols+i));
-		j+2;
+	for (i=0; i < numinputsymb; i++) {
+		softbits[j+0] = -creal(*(symbols+i));
+		softbits[j+1] = -cimag(*(symbols+i));
+		j += 2;
 	}
-	return(j);
+	return j;
 }
 
-int norm4QAM(_Complex float *inout, int length){
+int norm4QAM(_Complex float *inout, int length) {
 	int i;
-	float auxR, auxI, averg=0.0, Q=-0.0; 
-	static float ratio=0.0;
+	float auxR, auxI, averg = 0.0, Q = -0.01; 
+	static float ratio = 0.0;
 
-	for(i=0; i<length; i++){
+	for(i = 0; i < length; i++){
 		auxR=fabs(__real__ inout[i]);
 		auxI=fabs(__imag__ inout[i]);
 		averg = averg + auxR + auxI;
 	}
 
-	averg=averg/(2.0*(float)length+0.00000001);
-	ratio = (QAM4_LEVEL)/(averg+Q);		
-	for(i=0; i<length; i++){
-		inout[i] = inout[i]*ratio;
+	// The small offset is to prevent DIV0 error
+	averg = averg / (2.0 * (float)length + 0.00000001);
+	ratio = QAM4_LEVEL / (averg + Q);		
+	for(i=0; i < length; i++){
+		inout[i] = inout[i] * ratio;
 	}
-	return(1);
+	return 1;
 }
 
 /* 16QAM #####################################################################################################3*/
@@ -227,7 +228,7 @@ int mod_16QAM (char *bits, int numbits, _Complex float *symbols)
 	for (i=0;i<numbits;i+=4)
 	{
 		symbols[j]  =   ((bits[i+0]==1)?(-1):(+1))*((bits[i+2]==1)?(QAM16_LEVEL_2):(QAM16_LEVEL_1));
-		symbols[j] += I*((bits[i+1]==1)?(-1):(+1))*((bits[i+3]==1)?(QAM16_LEVEL_2):(QAM16_LEVEL_1));
+		symbols[j] = I*((bits[i+1]==1)?(-1):(+1))*((bits[i+3]==1)?(QAM16_LEVEL_2):(QAM16_LEVEL_1));
 		j++;
 	}
 	if((numbits/4) != j){

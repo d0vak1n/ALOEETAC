@@ -48,6 +48,6 @@ int stream_conv_CPLX(_Complex float *ccinput, int datalength, _Complex float *fi
 int createDMRS(_Complex float *DMRS);
 //int setPSS(int phylayerID, _Complex float *PSSsymb, int TxRxMode);
 
-void rotateCvector(_Complex float *in, _Complex float *out, int length, float Adegrees);
+void rotateCvector(_Complex float *in, int length, float Adegrees);
 float checkPhaseOffset(_Complex float *DMRScorrelation);
 #endif

@@ -139,23 +139,88 @@ int genDMRStime_seq(int FFTsize, _Complex float  *in_DMRSfreq, int DMRSlength, _
  * @return On success returns correlation peak position.
  * On error returns -1.
  */
+
+#define WINDOWSZSHORT  15
+#define WINDOWSZWIDE   256 
+#define WINDOWSZWIDE2  64
+
+#define PSS_THRESHOLD 9.0
+#define PSS_RATIO3THRESHOLD 0.0
+#define WINDOWSZSHORT 15
+#define WINDOWSZWIDE 256
+#define WINDOWSZWIDE2 10
+float EXTthreshold=PSS_THRESHOLD;
+
 int detect_DMRS_in_subframe(_Complex float *correl, int numsamples){
 
-	int i;
+	float variance=0.0;
+
+	int i, k;
 	int pMAX=-1;
-	float maxval = -1000000.0, smaxval=-1000000.0, auxR;
+	static int pMAX2=-1;
+	float maxval = -1000000.0, smaxval=1000000.0, auxR, auxR5, auxI5, ratio;
+	static float threshold;
+	static float thresholdratio3=999.9;
+	float varianceSHORT=0.0, varianceWIDE=0.0, variance2=0.0;
+	int Llimit=0, Hlimit=numsamples;
+	int P=0;
+	static float ratio3MAXave=PSS_RATIO3THRESHOLD, ratio3ave=1.0;
+	static int numave=1, numMAXave=1;
+
+	float MAX5=0, ratio5;
+	float varianceWIDE5=0.0;
+
 	//Find MAX
 	for(i=0; i<numsamples; i++){
 		auxR=(float)(fabs(__real__ *(correl+i)) + fabs(__imag__ *(correl+i)));
-		if(maxval < auxR){
-			smaxval=maxval;
-			maxval = auxR;
-			pMAX=i;
+	if(maxval < auxR){
+		smaxval=fabs(maxval);
+		maxval = fabs(auxR);
+		pMAX=i;
+	}
+	}
+
+
+	//CHECK if DMRS: TBD may be.
+	k=0;
+	auxR5=(float)(fabs(__real__ *(correl+pMAX)) + fabs(__imag__ *(correl+pMAX)));
+	auxI5=(float)(fabs(__real__ *(correl+pMAX)) - fabs(__imag__ *(correl+pMAX)));
+	MAX5=fabs(auxR5*auxI5);
+
+	if(pMAX - WINDOWSZWIDE2 > 0)Llimit=pMAX-WINDOWSZWIDE2;
+	else Llimit=0;
+
+	if(pMAX+WINDOWSZWIDE2 < numsamples)Hlimit=pMAX+WINDOWSZWIDE2;
+	else Hlimit=numsamples;
+
+	for(i=Llimit; i<Hlimit; i++){
+		auxR=(float)(fabs(__real__ *(correl+i)) + fabs(__imag__ *(correl+i)));
+		if(abs(pMAX - i) > 5){
+		varianceWIDE5 += auxR/maxval;
+		k++;
 		}
 	}
-	//CHECK if DMRS: TBD may be.
 
-	return(pMAX);
+	varianceWIDE5 = varianceWIDE5/(float)k;
+
+	if(isnan(varianceWIDE5))varianceWIDE5=1.0;
+	if(varianceWIDE5 < 0.001){   //0.01
+		varianceWIDE5 = 0.001;
+	}
+	if (fabs(varianceWIDE5/MAX5>1))ratio=0;
+
+	else ratio=fabs(1.0 - (varianceWIDE5/MAX5))*1000.0;
+	
+	printf("MAX5=%f, var=%f\n",MAX5,varianceWIDE5);
+	printf("\033[1;35m \tratio=%-10.3f, thresholdratio3=%-10.3f \033[0m\n",
+	ratio, thresholdratio3);
+
+	if (ratio>990 && ratio<1100){
+		pMAX2 = pMAX;		
+		return pMAX2;
+	}
+	else return -1;
+
 }
 
 #define SUBFRAME_BUFF_SZ		FFTSIZE*(NOFOFDMSYMBPERSUBFRAME+1)
@@ -196,7 +261,7 @@ int write_subframe_buffer(_Complex float *datain, int pMAX, int rcv_samples, int
 
 //	printf("IN SUBFRAME BUFFERS [%d][%d][%d][%d][%d]\n", 
 //		stat_subframe[0], stat_subframe[1],stat_subframe[2],stat_subframe[3],stat_subframe[4]);
-//	printf("w_subf_idx=%d, w_idx=%d\n", w_subf_idx, w_idx);
+	printf("w_subf_idx=%d, w_idx=%d\n", w_subf_idx, w_idx);
 
 	if(pMAX >= 0){
 		RXActive=ACTIVE; // RX active from here
@@ -204,7 +269,7 @@ int write_subframe_buffer(_Complex float *datain, int pMAX, int rcv_samples, int
 			for(i=0; i<rcv_samples; i++){
 				subframe_buffer[w_subf_idx][i]=*(datain+i);
 			}
-//			printf("AA stat_subframe[%d]=%d \n", w_subf_idx, stat_subframe[w_subf_idx]);
+//		printf("AA stat_subframe[%d]=%d \n", w_subf_idx, stat_subframe[w_subf_idx]);
 			stat_subframe[w_subf_idx]=FULL;
 			w_subf_idx++;
 			w_idx=0;
@@ -319,7 +384,7 @@ int read_subframe_buffer(_Complex float *dataout, int FFTsize){
  * \param Pdegrees: Accuracy in degrees of phasortable.
  * Return -1 if error, 1 if OK.
  */
-void rotateCvector(_Complex float *in, _Complex float *out, int length, float Adegrees){
+void rotateCvector(_Complex float *in, int length, float Adegrees){
 	int i;
 	_Complex float phasor;
 	float degrees;
@@ -327,7 +392,7 @@ void rotateCvector(_Complex float *in, _Complex float *out, int length, float Ad
 	degrees = Adegrees;
 	phasor=cos(degrees*PI/180.0)+(sin(degrees*PI/180.0))*I;
 	for(i=0; i<length; i++){
-		*(out+i)=*(in+i)*phasor;
+		*(in+i)=*(in+i)*phasor;
 	}
 }
 
