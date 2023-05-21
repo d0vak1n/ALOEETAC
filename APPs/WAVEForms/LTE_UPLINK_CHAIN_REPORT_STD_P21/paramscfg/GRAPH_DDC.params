@@ -25,7 +25,7 @@ parameter {
 # Number of time slots to capture
 parameter {
 	name = TS2capture
-	value = 10000
+	value = 300
 }
 # File to be written:
 # a) NULL : the written file will be "reports/GRAPH_MODULE_NAME"
@@ -43,7 +43,7 @@ parameter {
 # File to be read (): a) JACK0PSSDATA; b) CHANNEL20dBs
 parameter {
 	name = input_FILE
-	value = DDC_OUTPUT_SNR100dB
+	value = PROVA
 }
 #------------------------------------------------------------------------------
 # bypass; 0: No Bypass data, 1: Bypass data
@@ -81,7 +81,7 @@ parameter {
 # numsampl2view: Data is not plot until numsampl2view has been received
 parameter {
 	name = numsampl2view
-	value = 8192
+	value = 3584
 }
 
 # plot_periodTS: Defines the number of Time slot to skip before to plot again

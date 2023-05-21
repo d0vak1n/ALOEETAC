@@ -30,7 +30,7 @@ parameter {
 # 56
 parameter {
 	name = Ndecimate
-	value = 4
+	value = 30
 }
 #------------------------------------------------------------------
 # samplingfreqHz: A value in Hz. Use 1.0 when refers to samples
@@ -42,7 +42,7 @@ parameter {
 # Name of selected filter coeficients file:  LOW_PASS_242Hz_50dBs620HzR0001dBsREAL.coeff
 parameter {
 	name = filtercoefffile
-	value = paramscfg/LOW_PASS_4300Hz_80dBs5000HzR0_1REAL.coeff
+	value = paramscfg/FILTRO1K.coeff
 }
 #------------------------------------------------------------------
 

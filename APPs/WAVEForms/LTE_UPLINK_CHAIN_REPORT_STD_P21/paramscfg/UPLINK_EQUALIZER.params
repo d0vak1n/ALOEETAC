@@ -1,9 +1,10 @@
 ###################################################################
-#define NOEQUAL_NORS			0	// NO EQUALIZATION: NO Sounding Reference Signal, DELETE DMRS ONLY
-#define EQUAL_NORS				1	// EQUALIZATION: NO Sounding Reference Signal
+#define DEBUGG			0
+#define BYPASS			1
+#define NORMAL			2	// EQUALIZATION: NO Sounding Reference Signal
 parameter {
 	name = opMODE
-	value = 1
+	value = 2
 }
 ###################################################################
 #Options: 	1400000.0, 3000000.0, 	

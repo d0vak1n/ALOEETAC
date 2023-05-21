@@ -77,12 +77,12 @@ parameter {
 
 parameter {
 	name = plot_mode
-	value = 4
+	value = 1
 }
 # numsampl2view: Data is not plot until numsampl2view has been received
 parameter {
 	name = numsampl2view
-	value = 14000
+	value = 1792
 }
 
 # plot_periodTS: Defines the number of Time slot to skip before to plot again

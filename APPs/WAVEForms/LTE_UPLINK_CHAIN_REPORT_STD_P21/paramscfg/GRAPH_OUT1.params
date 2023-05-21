@@ -50,7 +50,7 @@ parameter {
 # bypass; 0: No Bypass data, 1: Bypass data
 parameter {
 	name = bypass
-	value = 0
+	value = 1
 }
 parameter {
 	name = delayBypass

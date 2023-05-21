@@ -12,7 +12,7 @@ parameter {
 # FLOAT TYPE
 parameter {
 	name = outlength
-	value = 14336
+	value = 107520
 }
 
 

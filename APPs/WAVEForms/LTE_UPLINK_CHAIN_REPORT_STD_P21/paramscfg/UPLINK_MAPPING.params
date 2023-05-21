@@ -53,14 +53,14 @@ parameter {
 # BitsperSymbQAM: options: 1-BPSK, 2-4QAM, 4-16QAM, 6-64QAM, 8-256QAM 
 parameter {
 	name = BitsperSymbQAM
-	value = 4
+	value = 2
 }
 ###################################################################
 #dataPeriod: Define the period of a perdiodicall ask for data to 
 #            data_source_sink module.
 parameter {
 	name = dataPeriod
-	value = 14
+	value = 105
 }
 #------------------------------------------------------------------
 # delayTOask: Define the number of time slots to wait before 
@@ -73,7 +73,7 @@ parameter {
 # NofDataSampl2ask: Define the number of bytes to ask for.
 parameter {
 	name = NofDataSampl2ask
-	value = 233
+	value = 325
 }
 ###################################################################
 #------------------------------------------------------------------

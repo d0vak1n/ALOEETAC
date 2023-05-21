@@ -7,7 +7,7 @@ parameter {
 # INTEGER TYPE
 parameter {
 	name = expectedinputlength
-	value = 14336
+	value = 107520
 }
 # FLOAT TYPE
 parameter {
