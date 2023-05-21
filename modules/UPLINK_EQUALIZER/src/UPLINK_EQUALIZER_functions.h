@@ -19,5 +19,18 @@
 #ifndef _FUNCTIONS_H
 #define _FUNCTIONS_H
 
+#define SLENGTH			32
+#define DEBUGG			0
+#define BYPASS			1
+#define NORMAL			2
 
+#define MAXOPERATIONS	20000
+typedef struct MODparams{
+    int opMODE;
+		int datalength;
+    int num_operations;
+    float constant;
+    char datatext[SLENGTH];
+}MODparams_t;
+int equalize(_Complex float *datain, int datalength, _Complex float *dataout, _Complex float *channel);
 #endif

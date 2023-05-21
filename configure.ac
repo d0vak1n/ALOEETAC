@@ -124,6 +124,7 @@ AC_CONFIG_FILES([Makefile
 	modules/typetools/lnx_make/Makefile
 		modules/ADSIMUL/lnx_make/Makefile
 	modules/CHANNEL_ANALYZER/lnx_make/Makefile
+	modules/CHANNEL_ESTIMATOR2/lnx_make/Makefile
 	modules/channel_noise/lnx_make/Makefile
 	modules/CIRC_BUFFER/lnx_make/Makefile
 	modules/computeEVM/lnx_make/Makefile
@@ -135,13 +136,17 @@ AC_CONFIG_FILES([Makefile
 	modules/data_source_sink/lnx_make/Makefile
 	modules/DDC/lnx_make/Makefile
 	modules/DDC17/lnx_make/Makefile
+	modules/DOWNLINK_DEMAPPING/lnx_make/Makefile
+	modules/DOWNLINK_MAPPING/lnx_make/Makefile
 	modules/DUC17/lnx_make/Makefile
+	modules/EQUALIZER1/lnx_make/Makefile
 	modules/FFT_IFFT/lnx_make/Makefile
 	modules/GRAPH/lnx_make/Makefile
 	modules/LTEturboCOD/lnx_make/Makefile
 	modules/LTEturboCOD2/lnx_make/Makefile
 	modules/MOD_QAM/lnx_make/Makefile
 	modules/module_template/lnx_make/Makefile
+	modules/PSS_SYNCHROT21/lnx_make/Makefile
 	modules/REAL_FILTER/lnx_make/Makefile
 	modules/SCRAMBLING/lnx_make/Makefile
 	modules/UPLINK_DEMAPPING/lnx_make/Makefile

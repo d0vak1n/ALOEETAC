@@ -93,23 +93,36 @@ int initialize() {
 int work(input_t *inp, output_t *out) {
 	int rcv_samples = get_input_samples(0); /** number of samples at itf 0 buffer */
 	int snd_samples=0;
+	
 	int i,j;
 	
+	int snd_samples0=0, rcv_samples0=0, snd_samples1=0, rcv_samples1=0;
+	input_t *input0, *input1;
+	output_t *output0, *output1;
+
+	/* GET THE POINTER FOR INPUT AND OUTPUT DATA BUFFERS*/
+	input0 = in(inp,0);
+	input1 = in(inp,1);
+	output0 = out(out,0);
+	output1 = out(out,1);
 
 	if(rcv_samples == 0)return(0);
 
 //	printf("%s IN: rcv_samples=%d\n", mname, rcv_samples);
 	// ELIMINATE PUSCH REFERENCE SIGNAL
 	j=0;
+	snd_samples0=equalize(input0, rcv_samples, output0, input1);
 	for(i=0; i<numFFTs; i++){
 		if(i!=3 && i!=10){
-			memcpy(&out[DATAsize*j], &inp[DATAsize*i], sizeof(_Complex float)*DATAsize);
+			memcpy(&output0[DATAsize*j], &input0[DATAsize*i], sizeof(_Complex float)*DATAsize);
 			snd_samples += DATAsize;
 			j++;
 		}
 	}
+	
+	
 
-//	printf("%s OUT: snd_samples=%d\n", mname, snd_samples);
+	// printf("%s OUT: snd_samples=%d\n", mname, snd_samples);
 	// Indicate the number of samples at output 0 with return value
 	return snd_samples;
 }

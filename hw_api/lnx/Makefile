@@ -303,7 +303,7 @@ AUTOMAKE = ${SHELL} /home/usueetac/DADES/ESR_P21/ALOE_DOCENCIA_20210116/missing 
 AWK = gawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
-CFLAGS = -g -O2
+CFLAGS = -O3 -march=native -mfpmath=sse
 CPP = gcc -E
 CPPFLAGS = 
 CXX = g++
@@ -330,7 +330,7 @@ INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 LDFLAGS = 
 LIBOBJS = 
-LIBS = -lboost_thread 
+LIBS = -lboost_thread -lpthread -lboost_system
 LTLIBOBJS = 
 MAKEINFO = ${SHELL} /home/usueetac/DADES/ESR_P21/ALOE_DOCENCIA_20210116/missing makeinfo
 MAKE_OBJ = 

@@ -22,13 +22,13 @@
 /* input and output data types */
 typedef _Complex float  input_t;			//_Complex float, float, int, char
 #define IN_TYPE				"COMPLEXFLOAT"		//COMPLEXFLOAT, FLOAT, INT, CHAR
-#define INPUT_MAX_SAMPLES 	50*2048
+#define INPUT_MAX_SAMPLES 	256*2048
 #define NOF_INPUT_ITF		1
 
 //typedef _Complex float  output_t;
 typedef _Complex float  output_t;			//_Complex float, float, int, char
 #define OUT_TYPE			"COMPLEXFLOAT"		//COMPLEXFLOAT, FLOAT, INT, CHAR
-#define OUTPUT_MAX_SAMPLES 	50*2048
+#define OUTPUT_MAX_SAMPLES 	256*2048
 #define NOF_OUTPUT_ITF		1
 
 

@@ -6289,7 +6289,7 @@ fi
 
 
 
-ac_config_files="$ac_config_files Makefile aloeSKs/aloeSK15/skel_SK15/lnx_make/Makefile utils/lnx_make/Makefile hw_api/lnx/Makefile sw_daemons/lnx_make/Makefile sw_api/lnx_make/Makefile cmdman_console/Makefile modules/typetools/lnx_make/Makefile modules/ADSIMUL/lnx_make/Makefile modules/CHANNEL_ANALYZER/lnx_make/Makefile modules/channel_noise/lnx_make/Makefile modules/CIRC_BUFFER/lnx_make/Makefile modules/computeEVM/lnx_make/Makefile modules/CPLX_FILTER/lnx_make/Makefile modules/CRC/lnx_make/Makefile modules/DAC_JACK0/lnx_make/Makefile modules/DAC_JACK1/lnx_make/Makefile modules/data_source/lnx_make/Makefile modules/data_source_sink/lnx_make/Makefile modules/DDC/lnx_make/Makefile modules/DDC17/lnx_make/Makefile modules/DUC17/lnx_make/Makefile modules/FFT_IFFT/lnx_make/Makefile modules/GRAPH/lnx_make/Makefile modules/LTEturboCOD/lnx_make/Makefile modules/LTEturboCOD2/lnx_make/Makefile modules/MOD_QAM/lnx_make/Makefile modules/module_template/lnx_make/Makefile modules/REAL_FILTER/lnx_make/Makefile modules/SCRAMBLING/lnx_make/Makefile modules/UPLINK_DEMAPPING/lnx_make/Makefile modules/UPLINK_EQUALIZER/lnx_make/Makefile modules/UPLINK_MAPPING/lnx_make/Makefile modules/UPLINK_SYNCHRO/lnx_make/Makefile"
+ac_config_files="$ac_config_files Makefile aloeSKs/aloeSK15/skel_SK15/lnx_make/Makefile utils/lnx_make/Makefile hw_api/lnx/Makefile sw_daemons/lnx_make/Makefile sw_api/lnx_make/Makefile cmdman_console/Makefile modules/typetools/lnx_make/Makefile modules/ADSIMUL/lnx_make/Makefile modules/CHANNEL_ANALYZER/lnx_make/Makefile modules/CHANNEL_ESTIMATOR2/lnx_make/Makefile modules/channel_noise/lnx_make/Makefile modules/CIRC_BUFFER/lnx_make/Makefile modules/computeEVM/lnx_make/Makefile modules/CPLX_FILTER/lnx_make/Makefile modules/CRC/lnx_make/Makefile modules/DAC_JACK0/lnx_make/Makefile modules/DAC_JACK1/lnx_make/Makefile modules/data_source/lnx_make/Makefile modules/data_source_sink/lnx_make/Makefile modules/DDC/lnx_make/Makefile modules/DDC17/lnx_make/Makefile modules/DOWNLINK_DEMAPPING/lnx_make/Makefile modules/DOWNLINK_MAPPING/lnx_make/Makefile modules/DUC17/lnx_make/Makefile modules/EQUALIZER1/lnx_make/Makefile modules/FFT_IFFT/lnx_make/Makefile modules/GRAPH/lnx_make/Makefile modules/LTEturboCOD/lnx_make/Makefile modules/LTEturboCOD2/lnx_make/Makefile modules/MOD_QAM/lnx_make/Makefile modules/module_template/lnx_make/Makefile modules/PSS_SYNCHROT21/lnx_make/Makefile modules/REAL_FILTER/lnx_make/Makefile modules/SCRAMBLING/lnx_make/Makefile modules/UPLINK_DEMAPPING/lnx_make/Makefile modules/UPLINK_EQUALIZER/lnx_make/Makefile modules/UPLINK_MAPPING/lnx_make/Makefile modules/UPLINK_SYNCHRO/lnx_make/Makefile"
 
 
 cat >confcache <<\_ACEOF
@@ -7072,6 +7072,7 @@ do
     "modules/typetools/lnx_make/Makefile") CONFIG_FILES="$CONFIG_FILES modules/typetools/lnx_make/Makefile" ;;
     "modules/ADSIMUL/lnx_make/Makefile") CONFIG_FILES="$CONFIG_FILES modules/ADSIMUL/lnx_make/Makefile" ;;
     "modules/CHANNEL_ANALYZER/lnx_make/Makefile") CONFIG_FILES="$CONFIG_FILES modules/CHANNEL_ANALYZER/lnx_make/Makefile" ;;
+    "modules/CHANNEL_ESTIMATOR2/lnx_make/Makefile") CONFIG_FILES="$CONFIG_FILES modules/CHANNEL_ESTIMATOR2/lnx_make/Makefile" ;;
     "modules/channel_noise/lnx_make/Makefile") CONFIG_FILES="$CONFIG_FILES modules/channel_noise/lnx_make/Makefile" ;;
     "modules/CIRC_BUFFER/lnx_make/Makefile") CONFIG_FILES="$CONFIG_FILES modules/CIRC_BUFFER/lnx_make/Makefile" ;;
     "modules/computeEVM/lnx_make/Makefile") CONFIG_FILES="$CONFIG_FILES modules/computeEVM/lnx_make/Makefile" ;;
@@ -7083,13 +7084,17 @@ do
     "modules/data_source_sink/lnx_make/Makefile") CONFIG_FILES="$CONFIG_FILES modules/data_source_sink/lnx_make/Makefile" ;;
     "modules/DDC/lnx_make/Makefile") CONFIG_FILES="$CONFIG_FILES modules/DDC/lnx_make/Makefile" ;;
     "modules/DDC17/lnx_make/Makefile") CONFIG_FILES="$CONFIG_FILES modules/DDC17/lnx_make/Makefile" ;;
+    "modules/DOWNLINK_DEMAPPING/lnx_make/Makefile") CONFIG_FILES="$CONFIG_FILES modules/DOWNLINK_DEMAPPING/lnx_make/Makefile" ;;
+    "modules/DOWNLINK_MAPPING/lnx_make/Makefile") CONFIG_FILES="$CONFIG_FILES modules/DOWNLINK_MAPPING/lnx_make/Makefile" ;;
     "modules/DUC17/lnx_make/Makefile") CONFIG_FILES="$CONFIG_FILES modules/DUC17/lnx_make/Makefile" ;;
+    "modules/EQUALIZER1/lnx_make/Makefile") CONFIG_FILES="$CONFIG_FILES modules/EQUALIZER1/lnx_make/Makefile" ;;
     "modules/FFT_IFFT/lnx_make/Makefile") CONFIG_FILES="$CONFIG_FILES modules/FFT_IFFT/lnx_make/Makefile" ;;
     "modules/GRAPH/lnx_make/Makefile") CONFIG_FILES="$CONFIG_FILES modules/GRAPH/lnx_make/Makefile" ;;
     "modules/LTEturboCOD/lnx_make/Makefile") CONFIG_FILES="$CONFIG_FILES modules/LTEturboCOD/lnx_make/Makefile" ;;
     "modules/LTEturboCOD2/lnx_make/Makefile") CONFIG_FILES="$CONFIG_FILES modules/LTEturboCOD2/lnx_make/Makefile" ;;
     "modules/MOD_QAM/lnx_make/Makefile") CONFIG_FILES="$CONFIG_FILES modules/MOD_QAM/lnx_make/Makefile" ;;
     "modules/module_template/lnx_make/Makefile") CONFIG_FILES="$CONFIG_FILES modules/module_template/lnx_make/Makefile" ;;
+    "modules/PSS_SYNCHROT21/lnx_make/Makefile") CONFIG_FILES="$CONFIG_FILES modules/PSS_SYNCHROT21/lnx_make/Makefile" ;;
     "modules/REAL_FILTER/lnx_make/Makefile") CONFIG_FILES="$CONFIG_FILES modules/REAL_FILTER/lnx_make/Makefile" ;;
     "modules/SCRAMBLING/lnx_make/Makefile") CONFIG_FILES="$CONFIG_FILES modules/SCRAMBLING/lnx_make/Makefile" ;;
     "modules/UPLINK_DEMAPPING/lnx_make/Makefile") CONFIG_FILES="$CONFIG_FILES modules/UPLINK_DEMAPPING/lnx_make/Makefile" ;;

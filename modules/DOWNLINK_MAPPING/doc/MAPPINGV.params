@@ -1,0 +1,64 @@
+#------------------------------------------------------------------
+# opMODE_NORMAL		0
+# opMODE_BYPASS		1
+# opMODE
+parameter {
+	name = opMODE
+	value = 0
+}
+#------------------------------------------------------------------
+# debugMODE: 1-NO ACTIVE, 2-PRINT MODE, 3-INPUT RAMP, 4-INPUT ALL ZEROS
+# debugMODE: 5-BYPASS
+parameter {
+	name = debugMODE
+	value = 1
+}
+#------------------------------------------------------------------
+# numchars7FFT
+parameter {
+	name = numchars7FFT
+	value = 87
+}
+#------------------------------------------------------------------
+# numchars13FFT
+parameter {
+	name = numchars13FFT
+	value = 161
+}
+#------------------------------------------------------------------
+# numchars14FFT
+parameter {
+	name = numchars14FFT
+	value = 177
+}
+#------------------------------------------------------------------
+# numTSNOT2SEND: numTSNOT2SEND-1 Tslots to receive 0 data
+# Only one of numTSNOT2SEND Tslots MAPPINGV is asking for data
+parameter {
+	name = numTSNOT2SEND
+	value = 7
+}
+#------------------------------------------------------------------
+#------------------------------------------------------------------
+# numTSChainDelay: Should not be > numTSNOT2SEND
+parameter {
+	name = numTSChainDelay
+	value = 6
+}
+#------------------------------------------------------------------
+#------------------------------------------------------------------
+# phylayerID: Cell identifier 0-504
+parameter {
+	name = phylayerID
+	value = 0
+}
+#------------------------------------------------------------------
+#------------------------------------------------------------------
+# FFTsz: 
+parameter {
+	name = FFTsz
+	value = 128
+}
+#------------------------------------------------------------------
+
+

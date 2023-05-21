@@ -31,4 +31,21 @@
  * @return -1 if error, the number of output data if OK
 
  */
+#define MAXVAL	15.0
+int equalize(_Complex float *datain, int datalength, _Complex float *dataout, _Complex float *channel){
+	int i, j=0;
+	for(i=0; i<datalength; i++){
+//		*(dataout+i)= *(datain+i)+(*(channel+j));
+		*(dataout+i)=*(datain+i)*(*(channel+j)); //Version0: Complex
+
+		if(__real__ *(dataout+i) > MAXVAL)__real__ *(dataout+i)=MAXVAL;
+		if(__imag__ *(dataout+i) > MAXVAL)__imag__ *(dataout+i)=MAXVAL;
+		if(__real__ *(dataout+i) < -MAXVAL)__real__ *(dataout+i)=-MAXVAL;
+		if(__imag__ *(dataout+i) < -MAXVAL)__imag__ *(dataout+i)=-MAXVAL;
+		j++;
+		if(j==256)j=0;
+	
+}
+	return(datalength);
+}
 
