@@ -1,0 +1,8 @@
+###################################################################
+#define DEBUGG						0	// NO EQUALIZATION: NO Sounding Reference Signal, DELETE DMRS ONLY
+#define FREQ_CHANNEL_ESTIMATION		1	// EQUALIZATION: NO Sounding Reference Signal
+#define BYPASS						2
+parameter {
+	name = opMODE
+	value = 1
+}
