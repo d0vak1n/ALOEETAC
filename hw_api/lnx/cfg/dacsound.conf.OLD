@@ -1,6 +1,0 @@
-
-main {
-#Sampling frequency field is ignored since it must be changed from the jack server
-	sampling_freq=44100
-	nof_samples=10242	
-}

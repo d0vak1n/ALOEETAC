@@ -1,9 +1,0 @@
-#!/bin/sh
-
-echo "Killing RUNPH process..."
-killall -s INT runph
-sleep 2
-echo "Starting RUNPH process..."
-runph
-
- 
