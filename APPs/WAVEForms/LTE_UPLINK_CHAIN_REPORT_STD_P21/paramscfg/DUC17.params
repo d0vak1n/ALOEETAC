@@ -22,7 +22,7 @@ parameter {
 # Ninterpol: Interpolation Number. Add N-1 zeros.
 parameter {
 	name = Ninterpol
-	value = 30
+	value = 4
 }
 #------------------------------------------------------------------
 # Ndecimate: Decimation Number. Eliminate samples
@@ -37,10 +37,10 @@ parameter {
 	value = 48000.0
 }
 #------------------------------------------------------------------
-# Name of selected filter coeficients file:  LOW_PASS_4300Hz_80dBs5000HzR0_1REAL.coeff
+# Name of selected filter coeficients file:  LOW_PASS_242Hz_50dBs620HzR0001dBsREAL.coeff
 parameter {
 	name = filtercoefffile
-	value = paramscfg/FILTRO1K.coeff
+	value = paramscfg/LOW_PASS_4300Hz_80dBs5000HzR0_1REAL.coeff
 }
 #------------------------------------------------------------------
 

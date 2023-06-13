@@ -77,12 +77,12 @@ parameter {
 
 parameter {
 	name = plot_mode
-	value = 0
+	value = 4
 }
 # numsampl2view: Data is not plot until numsampl2view has been received
 parameter {
 	name = numsampl2view
-	value = 1792
+	value = 1872
 }
 
 # plot_periodTS: Defines the number of Time slot to skip before to plot again
@@ -110,7 +110,7 @@ parameter {
 }
 parameter {
 	name = fftsize
-	value = 256
+	value = 4096
 }
 
 # AVERAGED FFT: 0=Non Averaged; 1: Averaged

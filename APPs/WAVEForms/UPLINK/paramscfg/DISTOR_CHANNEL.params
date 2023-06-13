@@ -12,7 +12,7 @@ parameter {
 #DISTOR_DELAY_REAL.coeff
 parameter {
 	name = filtercoefffile
-	value = paramscfg/ALL_PASS.coeff
+	value = paramscfg/ALL_PASS.coeff.bin
 }
 #------------------------------------------------------------------
 # Ninterpol: Interpolation Number. Add N-1 zeros.

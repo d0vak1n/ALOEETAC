@@ -14,7 +14,7 @@ parameter {
 #define M_64QAM						3
 parameter {
 	name = modulation
-	value = 1
+	value = 2
 }
 ################################ debugg
 #define NO DEBUGG					0

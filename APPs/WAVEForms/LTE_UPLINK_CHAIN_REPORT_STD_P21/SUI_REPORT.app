@@ -61,7 +61,7 @@ object {
 	}
 }
 ########################################
-########################################TURBOCODER
+########################################
 object {
 	obj_name=LTETURBOTX
 	exe_name=LTEturboCOD2
@@ -76,7 +76,7 @@ object {
 		remote_obj=SCRAMBLING
 	}
 }
-########################################TURBOCODER
+########################################
 ########################################SCRAMBLING
 object {
 	obj_name=SCRAMBLING

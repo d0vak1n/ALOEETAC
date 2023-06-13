@@ -1,4 +1,4 @@
-../src/bin_FFT_IFFT-FFT_IFFT_functions.o: ../src/FFT_IFFT_functions.c \
+../src/bin_fft_ifft-fft_ifft_functions.o: ../src/fft_ifft_functions.c \
  /usr/include/stdc-predef.h /usr/include/complex.h \
  /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -30,7 +30,7 @@
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/alloca.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
- /usr/include/x86_64-linux-gnu/bits/stdlib.h ../src/FFT_IFFT_functions.h
+ /usr/include/x86_64-linux-gnu/bits/stdlib.h ../src/fft_ifft_functions.h
 
 /usr/include/stdc-predef.h:
 
@@ -114,4 +114,4 @@
 
 /usr/include/x86_64-linux-gnu/bits/stdlib.h:
 
-../src/FFT_IFFT_functions.h:
+../src/fft_ifft_functions.h:

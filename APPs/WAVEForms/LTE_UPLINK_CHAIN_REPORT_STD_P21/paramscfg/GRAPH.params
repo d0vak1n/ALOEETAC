@@ -77,7 +77,7 @@ parameter {
 
 parameter {
 	name = plot_mode
-	value = 4
+	value = 1
 }
 # numsampl2view: Data is not plot until numsampl2view has been received
 parameter {

@@ -32,7 +32,7 @@ parameter {
 # MQAMOrder: 1-BPSK, 2-4QAM, 4-16QAM, 6-64QAM, 8-256QAM, 10-1024QAM
 parameter {
 	name = MQAMOrder
-	value = 2
+	value = 4
 }
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # CodeRate: (User bits) / (Maximum allowed bits according RBs used). 
@@ -54,7 +54,7 @@ parameter {
 # Higher number of errors as higher CodeRate value
 parameter {
 	name = CodeRate
-	value = 0.7
+	value = 0.25
 }
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # datatypeIN: CHAR or FLOAT

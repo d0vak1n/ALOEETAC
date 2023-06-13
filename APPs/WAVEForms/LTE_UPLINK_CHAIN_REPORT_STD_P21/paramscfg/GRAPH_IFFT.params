@@ -90,7 +90,7 @@ parameter {
 # Use a big enough number to avoid to stress the equipment due to plotting
 parameter {
 	name = plot_periodTS
-	value = 2
+	value = 1
 }
 # LOGSCALE: dB Scale for FFT plotting: 0=Linear Scale; 1=dB Scale
 parameter {

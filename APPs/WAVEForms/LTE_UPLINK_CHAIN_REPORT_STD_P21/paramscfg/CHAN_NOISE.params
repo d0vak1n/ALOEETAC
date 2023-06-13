@@ -12,7 +12,8 @@ parameter {
 # The SNR real value is SRNreal=SNR-10dBs
 parameter {
 	name = SNR
-	value = 110.0
+	value = 50.0
+}
 parameter {
 	name = NoiseVariance
 	value = 0.0
@@ -35,7 +36,7 @@ parameter {
 # When AD active always rcv_samples=1024
 parameter {
 	name = AD_Active
-	value = 2
+	value = 1
 }
 
 # 1) NON ACTIVE, 2) ACTIVE. Debug Check the impluse response of SUI channel. Inject a delta at module input
